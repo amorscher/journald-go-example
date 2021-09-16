@@ -14,8 +14,8 @@ type LogEntry struct {
 
 func main() {
 
-	// getJournalDLogs(1000000, 4)
-	entries, _ := getJournalDLogs(10000, 4)
+	//  getJournalDLogs(1000000, 4)
+	entries, _ := GetJournalDLogs(10000, 4)
 	for _, entry := range entries {
 		fmt.Println("--------------------------------------")
 		fmt.Println("Message:", entry.Message)
@@ -25,7 +25,7 @@ func main() {
 
 }
 
-func getJournalDLogs(numberOfEntries int, priority int) ([]LogEntry, error) {
+func GetJournalDLogs(numberOfEntries int, priority int) ([]LogEntry, error) {
 	var journal, _ = sdjournal.NewJournal()
 
 	var entries = make([]LogEntry, 0)

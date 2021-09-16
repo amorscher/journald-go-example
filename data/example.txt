@@ -1,0 +1,17 @@
+__CURSOR=123123123
+__REALTIME_TIMESTAMP=1625561736844422
+__MONOTONIC_TIMESTAMP=26147476
+_BOOT_ID=807acfb926c24b25ad556e2629065f3d
+_TRANSPORT=stdout
+_STREAM_ID=d82ff1e5f9a34fed970d56813d485aef
+PRIORITY=6
+SYSLOG_FACILITY=3
+SYSLOG_IDENTIFIER=systemd
+MESSAGE=gpgconf: error running '/usr/lib/gnupg/scdaemon': probably not installed
+_PID=1552
+_UID=1000
+_GID=1000
+_COMM=gpgconf
+_EXE=/usr/bin/gpgconf
+unconfined
+
