@@ -2,7 +2,13 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
+	_ "net/http/pprof"
+	"runtime"
 	"strconv"
+	"sync"
+	"time"
 
 	"github.com/coreos/go-systemd/v22/sdjournal"
 )
@@ -13,15 +19,26 @@ type LogEntry struct {
 }
 
 func main() {
+	fmt.Print("asdasdsad")
+	go func() {
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
 
 	//  getJournalDLogs(1000000, 4)
-	entries, _ := GetJournalDLogs(10000, 4)
-	for _, entry := range entries {
-		fmt.Println("--------------------------------------")
-		fmt.Println("Message:", entry.Message)
-		fmt.Println("Severity:", entry.Severity)
-		fmt.Println("--------------------------------------")
-	}
+	// entries, _ := GetJournalDLogs(10000, 4)
+	GetJournalDLogs(100000, 4)
+	// for _, entry := range entries {
+
+	// fmt.Println("--------------------------------------")
+	// fmt.Println("Message:", entry.Message)
+	// fmt.Println("Severity:", entry.Severity)
+	// fmt.Println("--------------------------------------")
+	// }
+	runtime.GC()
+	fmt.Println("Time:", time.Now().UnixMilli())
+	var wg sync.WaitGroup
+	wg.Add(1)
+	wg.Wait()
 
 }
 
