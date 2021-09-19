@@ -11,6 +11,8 @@ import (
 	"time"
 
 	"github.com/coreos/go-systemd/v22/sdjournal"
+	"github.com/go-echarts/statsview"
+	"github.com/go-echarts/statsview/viewer"
 )
 
 type LogEntry struct {
@@ -23,6 +25,13 @@ func main() {
 	go func() {
 		log.Println(http.ListenAndServe("localhost:6060", nil))
 	}()
+
+	viewer.SetConfiguration(viewer.WithTheme(viewer.ThemeWesteros), viewer.WithAddr("localhost:8087"))
+
+	mgr := statsview.New()
+
+	// Start() runs a HTTP server at `localhost:18066` by default.
+	go mgr.Start()
 
 	//  getJournalDLogs(1000000, 4)
 	// entries, _ := GetJournalDLogs(10000, 4)
